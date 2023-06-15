@@ -3,12 +3,27 @@
   <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
     style="max-height: 200px;">
   <div>
-    <form action="" method="POST" class="">
+    <form action="/URL_shortener" method="POST">
       <div>
-        <input type="url" name="URL" class="" style="width: 500px;" placeholder="input URL here" required>
+        <input type="url" name="URL" style="width: 500px;" placeholder="input URL here" {{#if URL}} value="{{ URL }}"
+          {{/if}}required>
         {{!-- 在防止表單送出後出現，提示使用者 --}}
+        <div class="invalid-feedback">
+          請輸入正確網址
+        </div>
       </div>
       <button type="submit">shorten</button>
     </form>
   </div>
+
+  {{#if shortURL}}
+
+  <div>
+    <div>Success! Please use this link:</div>
+    <a href="{{ shortURL }}" target="_blank" id="shortURL">{{ shortURL }}</a>
+  </div>
+  {{!-- 點擊按鈕會執行 function copy() --}}
+  <button type="button" onclick="copy()" class="btn btn-primary">Copy</button>
+
+  {{/if}}
 </div>
