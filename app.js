@@ -7,7 +7,10 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const routes = require('./routes')
+
 const app = express()
+
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
@@ -22,9 +25,8 @@ db.once('open', () => {
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+
+app.use(routes)
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
