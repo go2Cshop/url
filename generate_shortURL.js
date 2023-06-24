@@ -3,8 +3,7 @@ function generateShortURL() {
   const upperCaseLetters = lowerCaseLetters.toUpperCase()
   const numbers = '1234567890'
 
-  let collection = []
-  collection = collection.concat(...lowerCaseLetters).concat(...upperCaseLetters).concat(...numbers)
+  const collection = [].concat(...lowerCaseLetters).concat(...upperCaseLetters).concat(...numbers)
 
   let garbled = ''
   for (let i = 0; i <= 4; i++) {
